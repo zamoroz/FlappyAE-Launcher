@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from collections import OrderedDict
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,6 +34,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # My apps
     "app_main",
+    # Third apps
+    "constance",
 ]
 
 MIDDLEWARE = [
@@ -109,3 +112,26 @@ MEDIA_URL = "media/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
+
+CONSTANCE_ADDITIONAL_FIELDS = {
+    "file_field": ["django.forms.FileField", {}],
+    "image_field": ["django.forms.ImageField", {}],
+}
+
+
+CONSTANCE_CONFIG_FIELDSETS = {
+    "Лаунчер": ("LAUNCHER_LOGO", "LAUNCHER_BACKGROUND"),
+    "Версии": ("LATEST_EN_VERSION", "LATEST_RU_VERSION"),
+}
+
+CONSTANCE_CONFIG = OrderedDict(
+    [
+        ("LAUNCHER_LOGO", ("#", "Лого в лончере", "image_field")),
+        ("LAUNCHER_BACKGROUND", ("#", "Фон в лончере", "image_field")),
+        ("LATEST_EN_VERSION", ("2.4.0", "Последняя EN версия")),
+        ("LATEST_RU_VERSION", ("2.4.0", "Последняя RU версия")),
+    ]
+)

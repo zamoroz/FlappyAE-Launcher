@@ -1,5 +1,6 @@
 # Projects stuff
-db_data
+db_data/
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
