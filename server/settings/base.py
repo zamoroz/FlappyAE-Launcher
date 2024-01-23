@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "app_main",
     # Third apps
     "constance",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,7 @@ CONSTANCE_ADDITIONAL_FIELDS = {
 
 CONSTANCE_CONFIG_FIELDSETS = {
     "Лаунчер": ("LAUNCHER_LOGO", "LAUNCHER_BACKGROUND"),
-    "Версии": ("LATEST_EN_VERSION", "LATEST_RU_VERSION"),
+    "Версии": ("LATEST_EN_VERSION", "LATEST_RU_VERSION", "BETA_KEY"),
 }
 
 CONSTANCE_CONFIG = OrderedDict(
@@ -133,5 +134,6 @@ CONSTANCE_CONFIG = OrderedDict(
         ("LAUNCHER_BACKGROUND", ("#", "Фон в лончере", "image_field")),
         ("LATEST_EN_VERSION", ("2.4.0", "Последняя EN версия")),
         ("LATEST_RU_VERSION", ("2.4.0", "Последняя RU версия")),
+        ("BETA_KEY", ("DASDAS", "Ключ доступа к бете")),
     ]
 )
